@@ -71,12 +71,13 @@ cp -a ./template/. ./$project_name/
 placeholders_replacer
 cd ./$project_name
 
+echo -e "Installing dependencies with ${LIGHTBLUE}yarn${NOCOLOR}"
+yarn
+
 echo -e "Initiating git repository"
 git init
 git config user.name "$author_name"
 git config user.email "$author_email"
+git remote add origin "$project_repository"
 git add .
 git commit -m "feat: initial commit"
-
-echo -e "Installing dependencies with ${LIGHTBLUE}yarn${NOCOLOR}"
-yarn

@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "build": "babel src/ -d dist/",
-    "dev": "nodemon --exec node-babel ./src/index.js",
+    "dev": "nodemon --exec babel-node ./src/index.js",
     "eslint": "eslint 'src/**/*.js' --fix",
     "lint": "yarn eslint && flow",
     "start": "node dist/"

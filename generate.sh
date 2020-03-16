@@ -9,7 +9,7 @@ LIGHTBLUE='\033[1;34m'
 
 # ########################################### VARIABLES
 
-dependencies="@babel/cli @babel/core @babel/preset-env @babel/preset-flow @babel/node @babel/plugin-transform-runtime @babel/register @babel/runtime babel-eslint eslint eslint-config-airbnb-base eslint-config-prettier eslint-plugin-flowtype eslint-plugin-import eslint-plugin-prettier flow-bin prettier nodemon"
+dependencies="@babel/cli @babel/core @babel/node @babel/plugin-transform-runtime @babel/preset-env @babel/preset-flow @babel/register @babel/runtime babel-eslint babel-plugin-module-resolver eslint eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-babel-module eslint-plugin-flowtype eslint-plugin-import eslint-plugin-prettier flow-bin nodemon prettier"
 
 printf "${YELLOW}Project [name]: ${NOCOLOR}"
 read -r project_name

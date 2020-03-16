@@ -10,5 +10,14 @@
       }
     ]
   ],
-  "plugins": [["@babel/transform-runtime"]]
+  "plugins": [
+    ["@babel/transform-runtime"],
+    [
+      "module-resolver",
+      {
+        "root": ["./src/"],
+        "alias": {}
+      }
+    ]
+  ]
 }

@@ -17,5 +17,10 @@
   "plugins": ["flowtype", "prettier"],
   "rules": {
     "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }

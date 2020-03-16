@@ -69,6 +69,14 @@ echo -e "Creating project directory as ${GREEN}${project_name}${NOCOLOR}"
 mkdir $project_name
 cp -a ./template/. ./$project_name/
 placeholders_replacer
+cd ./$project_name
+
+echo -e "Initiating git repository"
+git init
+git config user.name "$author_name"
+git config user.email "$author_email"
+git add .
+git commit -m "feat: initial commit"
 
 echo -e "Installing dependencies with ${LIGHTBLUE}yarn${NOCOLOR}"
-cd ./$project_name && yarn
+yarn

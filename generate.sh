@@ -9,7 +9,7 @@ LIGHTBLUE='\033[1;34m'
 
 # ########################################### VARIABLES
 
-declare -a dependencies=("@babel/cli" "@babel/core" "@babel/preset-env" "@babel/preset-flow" "babel-eslint" "eslint" "eslint-config-airbnb-base" "eslint-config-prettier" "eslint-plugin-flowtype" "eslint-plugin-import" "eslint-plugin-prettier" "flow-bin" "prettier")
+dependencies="@babel/cli @babel/core @babel/preset-env @babel/preset-flow @babel/node @babel/plugin-transform-runtime @babel/register @babel/runtime babel-eslint eslint eslint-config-airbnb-base eslint-config-prettier eslint-plugin-flowtype eslint-plugin-import eslint-plugin-prettier flow-bin prettier nodemon"
 
 printf "${YELLOW}Project [name]: ${NOCOLOR}"
 read -r project_name
@@ -72,7 +72,7 @@ placeholders_replacer
 cd ./$project_name
 
 echo -e "Installing dependencies with ${LIGHTBLUE}yarn${NOCOLOR}"
-yarn
+yarn add $dependencies --dev
 
 echo -e "Initiating git repository"
 git init

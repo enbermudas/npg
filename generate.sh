@@ -9,7 +9,7 @@ LIGHTBLUE='\033[1;34m'
 
 # ########################################### VARIABLES
 
-dependencies="@babel/cli @babel/core @babel/node @babel/plugin-transform-runtime @babel/preset-env @babel/preset-flow @babel/register @babel/runtime babel-eslint babel-jest babel-plugin-module-resolver eslint eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-babel-module eslint-plugin-flowtype eslint-plugin-import eslint-plugin-prettier flow-bin jest nodemon prettier"
+dependencies="@babel/cli @babel/core @babel/node @babel/plugin-transform-runtime @babel/preset-env @babel/preset-flow @babel/register @babel/runtime babel-eslint babel-jest babel-plugin-module-resolver codecov eslint eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-babel-module eslint-plugin-flowtype eslint-plugin-import eslint-plugin-prettier flow-bin jest nodemon prettier"
 
 printf "${YELLOW}Project [name]: ${NOCOLOR}"
 read -r project_name
@@ -26,6 +26,9 @@ read -r author_name
 printf "${YELLOW}Author [email]: ${NOCOLOR}"
 read -r author_email
 
+printf "${YELLOW}Codecov [token]: ${NOCOLOR}"
+read -r codecov_token
+
 license_year=$(date +%Y)
 license_holder=${author_name^^}
 
@@ -40,6 +43,10 @@ declare -a license_replacements=("$license_year" "$license_holder")
 # Replacements on README.md
 declare -a readme_searchs=("project.name" "project.description")
 declare -a readme_replacements=("$project_name" "$project_description")
+
+# Replacements on codecov.yml and .circleci/config.yml
+declare -a codecov_searchs=("codecov.token")
+declare -a codecov_replacements=("$codecov_token")
 
 # ########################################### FUNCTIONS
 
@@ -61,6 +68,10 @@ placeholders_replacer() {
     do
         sed -i -e "s/${readme_searchs[$i]}/${readme_replacements[$i]}/g" "./${project_name}/README.md"
     done
+
+    # codecov.yml
+    sed -i -e "s/codecov.token/${codecov_token}/g" "./${project_name}/codecov.yml"
+    sed -i -e "s/codecov.token/${codecov_token}/g" "./${project_name}/.circleci/config.yml"
 }
 
 # ########################################### PROJECT GENERATION

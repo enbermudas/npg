@@ -26,6 +26,9 @@ read -r author_name
 printf "${YELLOW}Author [email]: ${NOCOLOR}"
 read -r author_email
 
+printf "${YELLOW}Author [username]: ${NOCOLOR}"
+read -r author_username
+
 printf "${YELLOW}Codecov [token]: ${NOCOLOR}"
 read -r codecov_token
 
@@ -41,8 +44,8 @@ declare -a license_searchs=("license.year" "license.holder")
 declare -a license_replacements=("$license_year" "$license_holder")
 
 # Replacements on README.md
-declare -a readme_searchs=("project.name" "project.description")
-declare -a readme_replacements=("$project_name" "$project_description")
+declare -a readme_searchs=("project.name" "project.description", "author.username")
+declare -a readme_replacements=("$project_name" "$project_description", "$author_username")
 
 # Replacements on codecov.yml and .circleci/config.yml
 declare -a codecov_searchs=("codecov.token")

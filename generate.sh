@@ -65,19 +65,40 @@ placeholders_replacer() {
 
 # ########################################### PROJECT GENERATION
 
-echo -e "Creating project directory as ${GREEN}${project_name}${NOCOLOR}"
+printf "Creating project directory as ${GREEN}${project_name}${NOCOLOR}."
 mkdir $project_name
 cp -a ./template/. ./$project_name/
 placeholders_replacer
 cd ./$project_name
 
-echo -e "Installing dependencies with ${LIGHTBLUE}yarn${NOCOLOR}"
+printf "\n\nInstalling dependencies with ${LIGHTBLUE}yarn${NOCOLOR}."
+printf "\nThis might take a couple of minutes.\n\n"
 yarn add $dependencies --dev
 
-echo -e "Initiating git repository"
+printf "\nInitiating git repository.\n\n"
 git init
 git config user.name "$author_name"
 git config user.email "$author_email"
 git remote add origin "$project_repository"
 git add .
 git commit -m "feat: initial commit"
+
+# ########################################### INSTRUCTIONS
+
+printf "\n 🚀   Project succesfully created!\n"
+
+printf "\n${LIGHTBLUE}yarn dev${NOCOLOR}"
+printf "\n  Start development server\n"
+
+printf "\n${LIGHTBLUE}yarn lint${NOCOLOR}"
+printf "\n  Lint source directory\n"
+
+printf "\n${LIGHTBLUE}yarn test${NOCOLOR}"
+printf "\n  Run tests\n"
+
+printf "\n${LIGHTBLUE}yarn build${NOCOLOR}"
+printf "\n  Build for production\n"
+
+printf "\nYou should try:"
+printf "\n  ${LIGHTBLUE}cd ${NOCOLOR} $project_name"
+printf "\n  ${LIGHTBLUE}yarn dev${NOCOLOR}\n\n"
